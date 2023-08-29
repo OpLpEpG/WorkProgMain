@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LayoutRoot>
+  <RootPanel Orientation="Horizontal">
+    <LayoutAnchorablePane DockWidth="0.5123287671232877*">
+      <LayoutAnchorable AutoHideWidth="200" AutoHideHeight="200" AutoHideMinWidth="20" AutoHideMinHeight="20" CanDockAsTabbedDocument="False" Title="Заезды на буровые" IsSelected="True" ContentId="ProjectsExplorerVM" ToolTip="Заезды на буровые" CanClose="False" CanFloat="False" LastActivationTimeStamp="07/31/2023 14:09:54" />
+    </LayoutAnchorablePane>
+    <LayoutPanel Orientation="Vertical" DockWidth="1.4876712328767123*">
+      <LayoutDocumentPane>
+        <LayoutAnchorable AutoHideWidth="400" AutoHideHeight="200" AutoHideMinWidth="20" AutoHideMinHeight="20" Title="Трассировка" IsSelected="True" ContentId="TraceLogVM" ToolTip="Трассировка" FloatingLeft="640" FloatingTop="425" FloatingWidth="400" FloatingHeight="200" CanClose="False" LastActivationTimeStamp="07/31/2023 16:29:44" />
+      </LayoutDocumentPane>
+      <LayoutAnchorablePane Id="f6fad0f6-3f75-40af-bad6-9458170da024">
+        <LayoutAnchorable AutoHideWidth="400" AutoHideHeight="200" AutoHideMinWidth="20" AutoHideMinHeight="20" Title="Инфо" IsSelected="True" ContentId="InfoLogVM" ToolTip="Инфо" FloatingLeft="640" FloatingTop="425" FloatingWidth="400" FloatingHeight="200" CanClose="False" LastActivationTimeStamp="07/31/2023 16:29:06" />
+      </LayoutAnchorablePane>
+    </LayoutPanel>
+  </RootPanel>
+  <TopSide />
+  <RightSide />
+  <LeftSide />
+  <BottomSide>
+    <LayoutAnchorGroup PreviousContainerId="f6fad0f6-3f75-40af-bad6-9458170da024" />
+    <LayoutAnchorGroup PreviousContainerId="f6fad0f6-3f75-40af-bad6-9458170da024" />
+  </BottomSide>
+  <FloatingWindows />
+  <Hidden />
+</LayoutRoot>
