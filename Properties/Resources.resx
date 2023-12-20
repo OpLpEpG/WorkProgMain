@@ -153,6 +153,9 @@
   <data name="m_Controll" xml:space="preserve">
     <value>Controll</value>
   </data>
+  <data name="m_Debugs" xml:space="preserve">
+    <value>Debug windows</value>
+  </data>
   <data name="m_File" xml:space="preserve">
     <value>File</value>
   </data>

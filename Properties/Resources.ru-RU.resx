@@ -153,6 +153,9 @@
   <data name="m_Controll" xml:space="preserve">
     <value>Управление</value>
   </data>
+  <data name="m_Debugs" xml:space="preserve">
+    <value>Отладочные окна</value>
+  </data>
   <data name="m_File" xml:space="preserve">
     <value>Файл</value>
   </data>
@@ -256,6 +259,6 @@
     <value>История ошибок</value>
   </data>
   <data name="tProjectExplorer" xml:space="preserve">
-    <value>Заезды на буровые</value>
+    <value>Обозреватель</value>
   </data>
 </root>

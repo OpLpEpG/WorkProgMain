@@ -151,6 +151,15 @@ namespace WorkProgMain.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Debug windows.
+        /// </summary>
+        public static string m_Debugs {
+            get {
+                return ResourceManager.GetString("m_Debugs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на File.
         /// </summary>
         public static string m_File {

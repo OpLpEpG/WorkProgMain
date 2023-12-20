@@ -37,8 +37,8 @@
                 </StackPanel>
             </DataTemplate>
             <vp:LayoutInitializer x:Key="LayoutInitializerKey"/>
-            <vp:PanesStyleSelector x:Key="PanesStyleSelectorKey"/>
-            <vp:PanesTemplateSelector x:Key="PanesTemplateSelectorKey"/>
+            <c:PanesStyleSelector x:Key="PanesStyleSelectorKey"/>
+            <c:PanesTemplateSelector x:Key="PanesTemplateSelectorKey"/>
             <vm:DockManagerVM x:Key="DockManagerVMKey"/>
             <c:MenuTemplateSelector x:Key="MenuTemplateSelectorVMKey"/>
             <c:ToolTemplateSelector x:Key="ToolTemplateSelectorVMKey"/>

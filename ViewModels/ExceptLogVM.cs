@@ -36,7 +36,7 @@ namespace WorkProgMain.ViewModels
         }
         void IMenuItemClient.AddStaticMenus(IMenuItemServer _menuItemServer)
         {
-            _menuItemServer.Add(RootMenusID.NShow, new[]
+            _menuItemServer.Add(RootMenusID.NDebugs, new[]
             {
                 new CommandMenuItemVM
                 {

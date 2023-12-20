@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Xceed.Wpf.AvalonDock.Layout;
 
 namespace WorkProgMain.ViewModels
 {
@@ -117,7 +116,7 @@ namespace WorkProgMain.ViewModels
         private readonly IServiceProvider _serviceProvider;
         public ProjectsExplorerFactory(IServiceProvider sp) => _serviceProvider = sp;
         public object Content => _serviceProvider.GetRequiredService<ProjectsExplorer>();
-        public AnchorableShowStrategy? anchorableShowStrategy => AnchorableShowStrategy.Left;
+        public ShowStrategy? AnchorableShowStrategy => ShowStrategy.Left;
 
         
     }

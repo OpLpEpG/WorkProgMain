@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
+using WorkProgMain.Models;
 using WpfDialogs;
 
 namespace WorkProgMain.ViewModels
@@ -47,48 +48,26 @@ namespace WorkProgMain.ViewModels
     //public class HiddenVM: OnSubMenuOpenMenuItemVM { }
     public class MenuVM : VMBase//, IMenuItemServer
     {
-        static MenuVM()
-        {
-            RootMenus.Items.AddRange(new[]
-            { 
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Create, Properties.Resources.nfile_Create, 100),
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Open, Properties.Resources.nfile_Open, 101),
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Add, Properties.Resources.nfile_Add, 300),
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Close, Properties.Resources.m_File, 500),
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_CloseProject, Properties.Resources.m_File, 500),
-
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Last_Projects, Properties.Resources.nfile_last_Projects, 700),
-                new rootMenu(RootMenusID.NFile, RootMenusID.NFile_Last_File, Properties.Resources.nfile_last_Files, 701),
-            });
-        }
-        public ObservableCollection<MenuItemVM> RootItems => MenuServer.Items;
-        public MenuItemVM FileMenu { get; private set; }
-        public MenuItemVM ShowWindow { get; private set; }
-        public MenuItemVM Hiddens { get; private set; }
+        public ObservableCollection<PriorityItem> RootItems => MenuServer.Items;
         public MenuVM(IMenuItemServer menuItemServer) 
         {
-           // var mainvm = ServiceProvider.GetRequiredService<MainVindowVM>();
-            //Items = new ObservableCollection<MenuItemVM>();
-            RootItems.Add(FileMenu = new MenuItemVM
+            MMenus.CreateMenusStructure();
+
+            menuItemServer.Add(RootMenusID.NFile, new MenuItemVM[]
             {
-                // IconSource = "pack://application:,,,/Images/DockBottom.PNG",
-                ContentID = RootMenusID.NFile,
-                Header = Properties.Resources.m_File,
-                Items =
-                    {
                         #region TEST Menus
                         new CommandMenuItemVM
                         {
                             Priority=1190,
                             Header="HIde Dock Manager",
-                            Command= new RelayCommand(() =>  
+                            Command= new RelayCommand(() =>
                                 MainVindowVM.ActionHideDockManager?.Invoke())
                         },
                         new CommandMenuItemVM
                         {
                             Priority=1199,
                             Header="Show Dock Manager",
-                            Command= new RelayCommand(() => 
+                            Command= new RelayCommand(() =>
                                 MainVindowVM.ActionShowDockManager?.Invoke())
                         },
                         new MenuSaveFile
@@ -108,7 +87,7 @@ namespace WorkProgMain.ViewModels
                                 new Guid("FDD39AD0-238F-46AF-ADB4-6C85480369C7"),//документы
                                 new Guid("1777F761-68AD-4D8A-87BD-30B759FA33DD"),//избрвнное
                             },
-                            OnSelectFileAction = f => 
+                            OnSelectFileAction = f =>
                                 MainVindowVM.ActionSaveDockManager?.Invoke(f)                            
                             //{
                             //    //var all = dockManager.Layout.Descendents().OfType<LayoutContent>().ToArray();
@@ -151,7 +130,6 @@ namespace WorkProgMain.ViewModels
                         },
                         #endregion
 
-                      //  new MenuItemVM{Priority=999},
                         new CommandMenuItemVM
                         {
                             Priority =10000,
@@ -159,77 +137,13 @@ namespace WorkProgMain.ViewModels
                             Header="E_xit",
                             Command = new RelayCommand(() => Application.Current.Shutdown())
                         },
-                    },
-            });
-            menuItemServer.UpdateSeparatorGroup(FileMenu);
 
-            RootItems.Add(ShowWindow = new MenuItemVM
+            });
+            menuItemServer.Add(RootMenusID.ROOT, new[]
             {
-                ContentID = RootMenusID.NShow,
-                Header = Properties.Resources.m_Show,
-                Items =
-                    {
-
-                    }
+                new MenuHiddens()
             });
-            RootItems.Add(Hiddens = new MenuHiddens());
-            //RootItems.Add(Hiddens = new HiddenVM
-            //{
-            //    IconSource = "pack://application:,,,/Images/DockPane.PNG",
-            //    Header = Properties.Resources.m_Hidden,
-            //    ContentID = RootMenusID.NHidden,
-            //    OnSubMenuAction = () =>
-            //    {
-            //        while (Hiddens!.Items.Count > 2) Hiddens.Items.RemoveAt(Hiddens.Items.Count - 1);
-            //        foreach (var a in dockManager.Layout.Hidden)
-            //        {
-            //            Hiddens.Items.Add(new CommandMenuItemVM
-            //            {
-            //                Header = a.Title,
-            //                Priority = 100,
-            //                Command = new RelayCommand(() => a.Show()),
-            //            });
-            //        }
-            //    },
-            //    Items =
-            //    {
-            //        new CommandMenuItemVM
-            //        {
-            //            Header = Properties.Resources.m_ShowAll,
-            //            Priority = 0,
-            //            Command = new RelayCommand(()=>
-            //            {
-            //                for(int i = 2; i < Hiddens!.Items.Count; i++)
-            //                    (Hiddens.Items[i] as CommandMenuItemVM)?.Command?.Execute(null);
-            //            }),
-            //        },
-            //        new SeparatorVM(){Priority = 0},
-            //    }
-            //});
-            // menuItemServer.UpdateSeparatorGroup(Hiddens);
 
-
-            //var view = new OnSubMenuOpenMenuItemVM { Header = "_Test Views" };
-
-            //view.OnSubMenuAction = () => view.Header = view.Header + "1";
-
-            //var sview1 = new MenuItemVM { 
-            //    Header = "sViews1",
-            //    IconSource = "pack://application:,,,/Images/DockBottom.PNG",
-            //};
-            //var sview2 = new MenuItemVM { Header = "sViews2", };
-            //var sview3 = new CommandMenuItemVM
-            //{
-            //    Header = "exit",
-            //    Priority = 1000,
-            //    IconSource = "pack://application:,,,/Images/DockBottom.PNG",
-            //    Command = new RelayCommand(() => Environment.Exit(0))
-            //};
-            //view.Items.Add(sview1);
-            //view.Items.Add(sview2);
-            //view.Items.Add(sview3);
-            //menuItemServer.UpdateSeparatorGroup(view);
-            //RootItems.Add(view);
         }
     }
 }

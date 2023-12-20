@@ -28,6 +28,7 @@ namespace WorkProgMain.ViewModels
         {
             Instance = this;
           //  IconSource = "pack://application:,,,/Images/DockPane.PNG";
+            Priority = 20;
             Header = Properties.Resources.m_Hidden;
             ContentID = RootMenusID.NHidden;
 
