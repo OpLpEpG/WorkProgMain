@@ -10,6 +10,13 @@ namespace WorkProgMain.Views.Pane
 {
     public class LayoutInitializer : ILayoutUpdateStrategy
     {
+        private void AssignFloatings(LayoutContent layoutContent, VMBaseForms model) 
+        {
+            layoutContent.FloatingLeft = model.FloatingLeft;
+            layoutContent.FloatingTop = model.FloatingTop;
+            layoutContent.FloatingHeight = model.FloatingHeight;
+            layoutContent.FloatingWidth = model.FloatingWidth;
+        }
         public void AfterInsertAnchorable(LayoutRoot layout, LayoutAnchorable anchorableShown)
         {
             
@@ -29,23 +36,22 @@ namespace WorkProgMain.Views.Pane
             {
                 return false;
             }
-                if (anchorableToShow.Content is ToolVM tvm 
+            if (anchorableToShow.Content is ToolVM tvm 
                 && !anchorableToShow.IsHidden 
                 && !anchorableToShow.IsVisible)
             {
-               // anchorableToShow.Closed += tvm.Closed;
+                // anchorableToShow.Closed += tvm.Closed;
+                // anchorable spec
                 anchorableToShow.CanDockAsTabbedDocument = tvm.CanDockAsTabbedDocument;
                 anchorableToShow.CanAutoHide = tvm.CanAutoHide;
-                //anchorableToShow.CanClose = tvm.CanClose;
                 anchorableToShow.CanHide = tvm.CanHide;
                 anchorableToShow.AutoHideHeight = tvm.AutoHideHeight;
                 anchorableToShow.AutoHideMinHeight = tvm.AutoHideMinHeight;
                 anchorableToShow.AutoHideWidth = tvm.AutoHideWidth;
                 anchorableToShow.AutoHideMinWidth = tvm.AutoHideMinWidth;
-                anchorableToShow.FloatingLeft = tvm.FloatingLeft;
-                anchorableToShow.FloatingTop = tvm.FloatingTop;
-                anchorableToShow.FloatingHeight = tvm.FloatingHeight;
-                anchorableToShow.FloatingWidth = tvm.FloatingWidth;
+                // content anchorable + doc
+                AssignFloatings(anchorableToShow, tvm);
+                //присоединение вручную
                 if (destinationContainer != null &&  destinationContainer.FindParent<LayoutFloatingWindow>() != null)
                 {
                     var g = new LayoutAnchorGroup();
@@ -74,7 +80,11 @@ namespace WorkProgMain.Views.Pane
         }
         public bool BeforeInsertDocument(LayoutRoot layout, LayoutDocument documentToShow, ILayoutContainer destinationContainer)
         {
-            if (documentToShow.Content is DocumentVM dvm) documentToShow.CanMove = dvm.CanMove;
+            if (documentToShow.Content is DocumentVM dvm)
+            {
+                documentToShow.CanMove = dvm.CanMove;
+                AssignFloatings(documentToShow, dvm);
+            }
             return false;
         }
     }   

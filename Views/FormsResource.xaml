@@ -7,37 +7,12 @@
         <ResourceDictionary Source="/Core;component/ViewResourceForms.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="ToolVMStyle" 
+    <!--<Style x:Key="ProjectsExplorerVMStyle" 
            TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
+           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>-->
 
-    <DataTemplate x:Key="ToolVMTemplate">
-        <StackPanel>
-            <TextBlock Text="Object"/>
-            <TextBlock Text="{Binding Title}"/>
-        </StackPanel>
-    </DataTemplate>
 
-    <Style x:Key="DocumentVMStyle" 
-           TargetType="{x:Type adctrl:LayoutDocumentItem}" 
-           BasedOn="{StaticResource LayoutDocumentItemStyle}"/>
-
-    <DataTemplate x:Key="DocumentVMTemplate">
-        <StackPanel>
-            <TextBlock Text="{Binding}"/>
-            <TextBlock Text="{Binding ContentID}"/>
-        </StackPanel>
-    </DataTemplate>
-
-    <Style x:Key="ProjectsExplorerVMStyle" 
-           TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
-
-    <DataTemplate x:Key="ProjectsExplorerVMTemplate">
-        <v:ProjectsExplorerUC/>
-    </DataTemplate>
-
-    <Style x:Key="ExceptLogVMStyle" 
+    <!--<Style x:Key="ExceptLogVMStyle" 
            TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
            BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
 
@@ -47,9 +22,17 @@
 
     <Style x:Key="InfoLogVMStyle" 
            TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
+           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>-->
 
-    <DataTemplate x:Key="ExceptLogVMTemplate">
+    <DataTemplate x:Key="ProjectsExplorerVMTemplate">
+        <v:ProjectsExplorerUC/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TextLogVMTemplate">
+        <v:TextLogUC/>
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="ExceptLogVMTemplate">
         <v:TextLogUC/>
     </DataTemplate>
     
@@ -59,7 +42,7 @@
     
     <DataTemplate x:Key="InfoLogVMTemplate">
         <v:TextLogUC/>
-    </DataTemplate>
+    </DataTemplate>-->
 
 </ResourceDictionary>
     
