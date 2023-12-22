@@ -111,15 +111,13 @@ namespace WorkProgMain.ViewModels
             });
         }
     }
-    public class ProjectsExplorerFactory //: IStaticContentClient
-    {
-        private readonly IServiceProvider _serviceProvider;
-        public ProjectsExplorerFactory(IServiceProvider sp) => _serviceProvider = sp;
-        public object Content => _serviceProvider.GetRequiredService<ProjectsExplorer>();
-        public ShowStrategy? AnchorableShowStrategy => ShowStrategy.Left;
-
-        
-    }
+    //public class ProjectsExplorerFactory //: IStaticContentClient
+    //{
+    //    private readonly IServiceProvider _serviceProvider;
+    //    public ProjectsExplorerFactory(IServiceProvider sp) => _serviceProvider = sp;
+    //    public object Content => _serviceProvider.GetRequiredService<ProjectsExplorer>();
+    //    public ShowStrategy? AnchorableShowStrategy => ShowStrategy.Left;        
+    //}
     public class ProjectsExplorerVM : ToolVM
     {
 
