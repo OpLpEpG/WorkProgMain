@@ -27,14 +27,5 @@
     <DataTemplate x:Key="MenuHiddens" DataType="MenuHiddens">
         <MenuItem Style="{StaticResource MenuHiddensStyle}"/>
     </DataTemplate>
-
-    <DataTemplate x:Key="MenuOpenFile" DataType="MenuOpenFile">
-        <vi:FileOpenMenuItemView Style="{StaticResource MenuItemKey}"/>
-    </DataTemplate>
-
-    <DataTemplate x:Key="MenuSaveFile" DataType="MenuSaveFile">
-        <vi:FileSaveMenuItemView Style="{StaticResource MenuItemKey}"/>
-    </DataTemplate>
-    
         
 </ResourceDictionary>

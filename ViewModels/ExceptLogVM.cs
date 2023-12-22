@@ -146,35 +146,6 @@ namespace WorkProgMain.ViewModels
                  "pack://application:,,,/Images/ExceptLog.png",
                  $"{Properties.Resources.m_Show}: {Properties.Resources.strTitleExceptions}")
         { }
-        //IServiceProvider _serviceProvider = VMBase.ServiceProvider;
-
-        //private void ShowPE()=> VMBaseForms.CreateOrShowSingle(_serviceProvider.GetRequiredService<ExceptLogVM>);
-        //void IMenuItemClient.AddStaticMenus(IMenuItemServer _menuItemServer)
-        //{
-        //    IToolServer toolServer = _serviceProvider.GetRequiredService<IToolServer>();
-        //    toolServer.Add("ToolText", new[]
-        //    {
-        //        new ToolButton
-        //        {
-        //            ToolTip = new ToolTip { Content = "Show logs" },
-        //            ContentID = "Exception",
-        //            IconSource = "pack://application:,,,/Images/ExceptLog.png",
-        //            Priority = -1000,
-        //            Command = new RelayCommand(ShowPE)
-        //        },
-        //    });
-        //    _menuItemServer.Add(RootMenusID.NShow, new[]
-        //    {
-        //        new CommandMenuItemVM
-        //        {
-        //            ContentID = "Exception",
-        //            Header = Properties.Resources.strTitleExceptions,
-        //            IconSource = "pack://application:,,,/Images/ExceptLog.png",
-        //            Priority = 1,
-        //            Command = new RelayCommand(ShowPE),                    
-        //        },
-        //    });
-        //}
     }
     public class TraceLogMenuFactory : LogMenuFactory<TraceLogVM>
     {

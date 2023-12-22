@@ -83,7 +83,7 @@ namespace WorkProgMain.ViewModels
                 },
             });
             _menuItemServer.Add(RootMenusID.NFile_Create, new MenuItemVM[] {
-                new MenuOpenFile
+                new MenuOpenFileVM
                 {
                     ContentID = "FOP",
                     Header = Properties.Resources.nfile_Open,

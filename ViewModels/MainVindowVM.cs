@@ -23,23 +23,19 @@ namespace WorkProgMain.ViewModels
 {
     public class MainVindowVM : VMBase
     {
-        //private WindowState _curWindowState = WindowState.Normal;
-        //public WindowState CurWindowState
-        //{
-        //    get
-        //    {
-        //        return _curWindowState;
-        //    }
-        //    set
-        //    {
-        //        _curWindowState = value;
-        //        OnPropertyChanged("CurWindowState");
-        //    }
-        //}
+        /// <summary>        
+        /// т.к VM незнает про View создаем статические делегаты
+        /// для управления View из VM без дата Binding
+        /// делегатам присваивается значение во View
+        /// делегаты выполняются из VM
+        /// </summary>
         public static Action? ActionHideDockManager { get; set; }
         public static Action? ActionShowDockManager { get; set; }
         public static Action<string>? ActionSaveDockManager { get; set; }
         public static Action<string>? ActionLoadDockManager { get; set; }
+        /// <summary>
+        ///  меню VM, тулы VM
+        /// </summary>        
         public MenuVM MenuVM { get; private set; }
         public ToolBarVM ToolGlyphVM { get; private set; }
         public ToolBarVM ToolTextVM { get; private set; }

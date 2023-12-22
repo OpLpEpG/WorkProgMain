@@ -1,11 +1,14 @@
 ﻿using Core;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Navigation;
 using WorkProgMain.ViewModels;
 using WpfDialogs;
@@ -13,31 +16,32 @@ using Xceed.Wpf.AvalonDock;
 using Xceed.Wpf.AvalonDock.Controls;
 using Xceed.Wpf.AvalonDock.Layout;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WorkProgMain
 {
+    [ValueConversion(typeof(VMBaseForms), typeof(LayoutContent))]
+    public class VMtoLayoutContentConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null && targetType == typeof(LayoutContent)) 
+            {
+                LayoutRoot lr = VMBase.ServiceProvider.GetRequiredService<MainWindow>().dockManager.Layout;
+                return lr.Descendents().OfType<LayoutContent>().FirstOrDefault(lc => lc.Content == value) ?? Binding.DoNothing;
+            }
+            return Binding.DoNothing;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is LayoutContent lc) return lc.Content;
+            else return Binding.DoNothing; 
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window//, IMainWindow
     {
-        #region IMainWindow
-        //public Grid GridRoot => gridRoot;
-        //public ToolBarTray ToolBarTray => toolBarTry;
-        //public ToolBar ToolBarMenu => toolBarMenu;
-        //public ToolBar ToolBarSpeedButtons => toolBarButtonGliph;
-        //public ToolBar ToolBarButtons => toolBarButtonText;
-        //public DockingManager DockManager => dockManager;
-        //public StatusBar StatusBar => sb;
-        //public Window Window => this;
-        //public LayoutDocumentPane DocumentPane => layRootDock;
-        //public object? FindMenu(string name)=> menu.FindName(name);
-        //public T AddToLayout<T>(bool CanClose = true, bool CanHide = false, bool CanAutoHide = true, bool CanFloat = true, bool CanDockAsTabbedDocument = true)
-        // where T : class => ((MainVindowVM)DataContext).AddToLayout<T>(CanClose, CanHide, CanAutoHide, CanFloat, CanDockAsTabbedDocument);
-        //public void AddToLayout(object content) => ((MainVindowVM)DataContext).AddToLayout(content);
-        //public void AddToLayoutDocument(object content) => layRootDock.Children.Add((LayoutDocument)content);
-        #endregion
         public MainWindow(MainVindowVM vm)
         {
             InitializeComponent();

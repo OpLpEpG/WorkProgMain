@@ -1,5 +1,7 @@
 ﻿using Core;
 using ExceptionExtensions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -106,6 +108,10 @@ namespace WorkProgMain.ViewModels
                 if (_activeDocument != value)
                 {
                     _activeDocument = value;
+
+                    var l = ServiceProvider.GetRequiredService<ILogger<VMBaseForms>>();
+                    l.LogInformation(" ActiveDocument {} ", _activeDocument?.ContentID);
+
                     OnPropertyChanged(nameof(ActiveDocument));
                     if (ActiveDocumentChanged != null)
                         ActiveDocumentChanged(this, EventArgs.Empty);

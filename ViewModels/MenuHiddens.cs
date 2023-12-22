@@ -11,19 +11,10 @@ namespace WorkProgMain.ViewModels
 {
     public class MenuHidden : CommandMenuItemVM { }
 
-
     public class MenuHiddens: OnSubMenuOpenMenuItemVM
     {
         static MenuHiddens? Instance;
 
-        static MenuHiddens()
-        {
-            MenuTemplateSelector.Dictionary.MergedDictionaries.Add(new ResourceDictionary()
-            {
-                Source = new Uri("pack://application:,,,/Views/MenusResource.xaml")
-            });
-
-        }
         public MenuHiddens() 
         {
             Instance = this;

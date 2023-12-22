@@ -36,6 +36,7 @@
                     <TextBlock Text="{Binding Title}" Foreground="DarkBlue" Margin="2"/>
                 </StackPanel>
             </DataTemplate>
+            <local:VMtoLayoutContentConverter x:Key="VMtoLayoutContentConverterKey"/>
             <vp:LayoutInitializer x:Key="LayoutInitializerKey"/>
             <c:PanesStyleSelector x:Key="PanesStyleSelectorKey"/>
             <c:PanesTemplateSelector x:Key="PanesTemplateSelectorKey"/>
@@ -208,8 +209,14 @@
             </StackPanel>
         </Grid>
 
+        
+        
+        <!--ActiveContent="{Binding ActiveDocument}"-->
+
+
         <a:DockingManager Name="dockManager" Grid.Row="1" 
                           AutoHideWindowClosingTimer="100" 
+                          ActiveContent="{Binding ActiveDocument, Mode=TwoWay, Converter={StaticResource VMtoLayoutContentConverterKey}}"
                           AnchorablesSource="{Binding Tools}"
                           DocumentsSource="{Binding Docs}"
                           DocumentHeaderTemplate="{StaticResource LayoutDocumentHeaderKey}"

@@ -80,6 +80,10 @@ namespace WorkProgMain
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            MenuTemplateSelector.Dictionary.MergedDictionaries.Add(new ResourceDictionary()
+            {
+                Source = new Uri("pack://application:,,,/Views/MenusResource.xaml")
+            });
             FormResource.Dictionary.MergedDictionaries.Add(new ResourceDictionary()
             {
                 Source = new Uri("pack://application:,,,/Views/FormsResource.xaml")

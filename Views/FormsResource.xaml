@@ -7,23 +7,6 @@
         <ResourceDictionary Source="/Core;component/ViewResourceForms.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <!--<Style x:Key="ProjectsExplorerVMStyle" 
-           TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>-->
-
-
-    <!--<Style x:Key="ExceptLogVMStyle" 
-           TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
-
-    <Style x:Key="TraceLogVMStyle" 
-           TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>
-
-    <Style x:Key="InfoLogVMStyle" 
-           TargetType="{x:Type adctrl:LayoutAnchorableItem}" 
-           BasedOn="{StaticResource LayoutAnchorableItemStyle}"/>-->
-
     <DataTemplate x:Key="ProjectsExplorerVMTemplate">
         <v:ProjectsExplorerUC/>
     </DataTemplate>
@@ -31,18 +14,6 @@
     <DataTemplate x:Key="TextLogVMTemplate">
         <v:TextLogUC/>
     </DataTemplate>
-
-    <!--<DataTemplate x:Key="ExceptLogVMTemplate">
-        <v:TextLogUC/>
-    </DataTemplate>
-    
-    <DataTemplate x:Key="TraceLogVMTemplate">
-        <v:TextLogUC/>
-    </DataTemplate>
-    
-    <DataTemplate x:Key="InfoLogVMTemplate">
-        <v:TextLogUC/>
-    </DataTemplate>-->
 
 </ResourceDictionary>
     

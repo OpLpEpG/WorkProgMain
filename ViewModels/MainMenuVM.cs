@@ -70,7 +70,7 @@ namespace WorkProgMain.ViewModels
                             Command= new RelayCommand(() =>
                                 MainVindowVM.ActionShowDockManager?.Invoke())
                         },
-                        new MenuSaveFile
+                        new MenuSaveFileVM
                         {
                             Priority=3199,
                             Header="Save Dock Manager",
@@ -106,7 +106,7 @@ namespace WorkProgMain.ViewModels
                             //        serializer.Serialize(stream);
                             //})
                         },
-                        new MenuOpenFile
+                        new MenuOpenFileVM
                         {
                             Priority=3199,
                             Header="Restore Dock Manager",
